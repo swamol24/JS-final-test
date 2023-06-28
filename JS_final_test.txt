@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS final test</title>
+	<style type="text/css">
+		table,th,tr{
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+<input id="first"type="number" name="fixedvalue" />
+<button id="btn" >Submit Fixed Value</button>
+<p id="fixedAmount">Fixed Amount : </p>
+<p id="currentPenaltyValue">Penalty Value : </p>
+<button id="custom-btn">Add Penalty</button>
+
+<table id="table">
+	<tr>
+		<th><b>Sr No</b></th>
+		<th><b>Add Amount</b></th>
+		<th><b>Updated Penalty Value </b></th>
+	</tr>
+	<tr>
+		<td id="number"></td>
+		<td id="fixed"></td>
+		<td id="Penalty"></td>
+	</tr>
+</table>
+
+
+<script type="text/javascript">
+	let serialNumber = document.querySelector("#number");
+	let tableFixed = document.querySelector("#fixed");
+	let tablePenalty = document.querySelector("#penalty");
+
+	function submit(){
+	let fixedValue = document.getElementById("first").value;
+	let fixedAmount = document.getElementById("fixedAmount").innerHTML;
+    fixedAmount.innerText = fixedValue;
+	}
+	function addPenalty(){
+		currentPenaltyValue.innerText = Number(currentPenaltyValue.innerText) + Number(fixedAmount.innerText);
+		fixedAmount.innerText = tableFixed;
+        currentPenaltyValue.innerText = tablePenalty;
+	}
+    document.getElementById("btn").addEventListener("click",submit);
+    document.getElementById("custom-btn").addEventListener("click",addPenalty)
+	
+</script>
+</body>
+</html>
