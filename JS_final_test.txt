@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>JS final test</title>
+	<title>Penalty jar</title>
 	<style type="text/css">
 		table,th,tr{
 			border: 1px solid;
@@ -11,13 +11,17 @@
 	</style>
 </head>
 <body>
-<input id="first"type="number" name="fixedvalue" />
-<button id="btn" >Submit Fixed Value</button>
-<p id="fixedAmount">Fixed Amount : </p>
-<p id="currentPenaltyValue">Penalty Value : </p>
-<button id="custom-btn">Add Penalty</button>
-
-<table id="table">
+	<h2>Final test</h2>
+	<input type="text" name="first" id="input1" />
+	<button type="submit" id="btn1">Submit fixed amount</button><br />
+	<div>
+		Fixed Amount :
+		<span id="result"></span>
+	</div>
+	<br />
+	<span id="current"> Penalty Value :0</span>
+	<button type="submit" id="btn2">Add Penalty</button><br/>
+	<table id="table">
 	<tr>
 		<th><b>Sr No</b></th>
 		<th><b>Add Amount</b></th>
@@ -28,27 +32,61 @@
 		<td id="fixed"></td>
 		<td id="Penalty"></td>
 	</tr>
+	<!--<thead>
+		<th>fixed amount</th>
+		<th>updated penalty value</th>
+	</thead>
+	<tbody>
+		
+	</tbody>-->
 </table>
-
-
 <script type="text/javascript">
-	let serialNumber = document.querySelector("#number");
-	let tableFixed = document.querySelector("#fixed");
-	let tablePenalty = document.querySelector("#penalty");
+	let input1 = document.getElementById("input1");
+	let btn1 =document.getElementById("btn1");
+	let result =document.getElementById("result");
+	let current = document.getElementById("current");
+	let btn2 =document.getElementById("btn2");
+	let number =document.getElementById("number");
+	let fixed = document.getElementById("fixed");
+	let update =document.getElementById("Penalty");
 
-	function submit(){
-	let fixedValue = document.getElementById("first").value;
-	let fixedAmount = document.getElementById("fixedAmount").innerHTML;
-    fixedAmount.innerText = fixedValue;
-	}
-	function addPenalty(){
-		currentPenaltyValue.innerText = Number(currentPenaltyValue.innerText) + Number(fixedAmount.innerText);
-		fixedAmount.innerText = tableFixed;
-        currentPenaltyValue.innerText = tablePenalty;
-	}
-    document.getElementById("btn").addEventListener("click",submit);
-    document.getElementById("custom-btn").addEventListener("click",addPenalty)
+	btn1.addEventListener("click",() =>{
+		result.innerHTML = Number(input1.value);
+	});
+
+	let penalty = 0;
+	btn2.addEventListener("click",() =>{
+		penalty += Number(input1.value);
+		current.innerHTML = "penalty Value :" + Number(penalty);
+	});
+	let counter=1;
+	btn2.addEventListener("click",() =>{
+		number.innerHTML = counter;
+     counter++;
+
+	});
+    
+
+    btn2.addEventListener("click",() =>{
+    	fixed.innerHTML = Number(input1.value);
+    });
 	
+	btn2.addEventListener("click",() =>{
+		update.innerHTML = Number(penalty);
+	});
+
+	/*btn2.addEventListener("click",() =>{
+		let tr = document.createElement('tr');
+		let td1 = tr.appendChild(document.createElement('td'));
+		let td2 = tr.appendChild(document.createElement('td'));
+		let td3 = tr.appendChild(document.createElement('td'));
+
+		td1.innerHTML = number;
+		td2.innerHTML = fixed;
+		td3.innerHTML = update;
+
+		document.getElementById("tb1").appendChild(tr);
+	});*/
 </script>
 </body>
 </html>
